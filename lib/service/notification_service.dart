@@ -79,8 +79,11 @@ class NotificationService {
   }
 
   Future<void> scheduleNotification(TodoDTO todo) async {
+    if (!todo.hasNotification) {
+      return;
+    }
     String title = 'Remember to ${todo.taskName} at ${DateFormat('hh:mm').format(todo.time)}';
-    tz.TZDateTime scheduledDate = tz.TZDateTime.from(todo.time, tz.local).subtract(const Duration(minutes: 10));
+    tz.TZDateTime scheduledDate = tz.TZDateTime.from(todo.scheduledNotificationAt, tz.local);
     await flutterLocalNotificationsPlugin.zonedSchedule(
         todo.id, title, todo.description, scheduledDate, platformChannelSpecifics,
         androidAllowWhileIdle: true,

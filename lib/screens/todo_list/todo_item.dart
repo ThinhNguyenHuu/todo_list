@@ -39,7 +39,7 @@ class TodoItem extends StatelessWidget {
                 child: const Icon(Icons.calendar_today, color: Colors.red),
               ),
               Text(
-                DateFormat('d MMM, hh:mm').format(item.time),
+                DateFormat('d MMM, HH:mm').format(item.time),
                 style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ],

@@ -67,7 +67,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
     List<TodoDTO> items = todoModel.getList(widget.args.type);
 
     void handleAddNewTodo() async {
-      if (_todoTaskName != '') {
+      if (_todoTaskName != '' && _todoDescription != '') {
         await todoModel.add(_todoTaskName, _todoDescription, _todoTime);
         ToastHelper.showToastSuccess('Added new todo successfully');
       } else {

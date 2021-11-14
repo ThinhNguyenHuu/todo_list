@@ -52,7 +52,9 @@ class TodoModel extends ChangeNotifier {
   final List<TodoDTO> _items = [];
   static int _availableId = 1;
 
-  UnmodifiableListView<TodoDTO> get items => UnmodifiableListView(_items);
+  UnmodifiableListView<TodoDTO> get items {
+    return UnmodifiableListView(_items.reversed.toList());
+  }
 
   void addFromDb(List<TodoDTO> todos) {
     _items.clear();

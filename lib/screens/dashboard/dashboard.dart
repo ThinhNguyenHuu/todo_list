@@ -31,7 +31,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     DataAccessService().retrieveTodos().then((todos) {
-      print(todos);
       Provider.of<TodoModel>(context, listen: false).addFromDb(todos);
     });
   }
@@ -86,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
 
     void handleAddNewTodo() async {
-      if (_todoTaskName != '') {
+      if (_todoTaskName != '' && _todoDescription != '') {
         await todoModel.add(_todoTaskName, _todoDescription, _todoTime);
         ToastHelper.showToastSuccess('Added new todo successfully');
       } else {
